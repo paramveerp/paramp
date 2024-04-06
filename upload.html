@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPLOAD DOCUMENT</title>
+    <link rel="stylesheet" href="profile.css">
+
+</head>
+
+<body>
+    <div class="nav">
+
+        <a href="profile.html"><button id="first"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path
+                        d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
+                </svg>PROFILE</button></a>
+        <a href="#"><button><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path
+                        d="M0 64C0 28.7 28.7 0 64 0H224V128c0 17.7 14.3 32 32 32H384V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64zm384 64H256V0L384 128z" />
+                </svg>UPLOAD DOCUMENT</button></a>
+        <a href=""><button><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path
+                        d="M64 64C28.7 64 0 92.7 0 128V384c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64H64zm64 320H64V320c35.3 0 64 28.7 64 64zM64 192V128h64c0 35.3-28.7 64-64 64zM448 384c0-35.3 28.7-64 64-64v64H448zm64-192c-35.3 0-64-28.7-64-64h64v64zM288 160a96 96 0 1 1 0 192 96 96 0 1 1 0-192z" />
+                </svg>BILL</button></a>
+        <a href="booking.html"><button><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                    <path
+                        d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192h80v56H48V192zm0 104h80v64H48V296zm128 0h96v64H176V296zm144 0h80v64H320V296zm80-48H320V192h80v56zm0 160v40c0 8.8-7.2 16-16 16H320V408h80zm-128 0v56H176V408h96zm-144 0v56H64c-8.8 0-16-7.2-16-16V408h80zM272 248H176V192h96v56z" />
+                </svg>BOOKING</button></a>
+        <a href="#"><button id="logoutButton" style="font-size:medium;">Logout</button></a>
+
+    </div>
+    <form>
+        <div class="name"><label>Aadhar number/</label><input id="aadhar_number" type="text"></div><br>
+        <div class="name"><label>upload Aadhar/</label><input id="aadhar_document" type="file"></div><br>
+        <hr>
+        <div class="name"><label>Bank Account number/</label><input id="bank_acc_number" type="text"></div><br>
+        <div class="name"><label>Upload Bank Passbook</label><input id="bank_document" type="file"></div><br>
+        <hr>
+        <div class="name"><label>upload 7/12 form/</label><input id="seven_twelve_doc" type="file"></div><br>
+        <div class="name"><label>upload 8 A form/</label><input id="eight_a_doc" type="file"></div><br>
+        <hr>
+        <button type="button" onclick="documentUpload()">Save and Next/जतन करा आणि पुढे जा</button>
+    </form>
+
+    <script>
+        function documentUpload() {
+            var username = localStorage.getItem("username");
+            const aadhar_number = document.getElementById('aadhar_number').value;
+            const aadhar_document = document.getElementById('aadhar_document').files[0];
+            const bank_acc_number = document.getElementById('bank_acc_number').value;
+            const bank_document = document.getElementById('bank_document').files[0];
+            const seven_twelve_document = document.getElementById('seven_twelve_doc').files[0];
+            const eight_a_document = document.getElementById('eight_a_doc').files[0];
+
+            if (!aadhar_document) {
+                alert('Please select an Aadhar Document');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('aadhar_document', aadhar_document);
+            formData.append('bank_document', bank_document);
+            formData.append('seven_twelve_document', seven_twelve_document);
+            formData.append('eight_a_document', eight_a_document);
+            formData.append('aadhar_number', aadhar_number);
+            formData.append('bank_acc_number', bank_acc_number);
+            formData.append('username', username);
+
+            fetch('http://127.0.0.1:5000/upload-document', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Network response was not ok.');
+                })
+                .then(data => {
+                    if (data.message) {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('There was an error!', error);
+                    // Show error message if there's an error in the API call
+                });
+        }
+    </script>
+</body>
+
+</html>

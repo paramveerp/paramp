@@ -1,0 +1,93 @@
+body{
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100;
+  background-color: #737374;
+ display: flex;
+ flex-wrap: wrap;
+}
+form{
+   width: 950px;
+  color: rgb(10, 10, 10);
+  padding: 50px;
+  margin-right:100px;
+  margin-bottom: 100px;
+  margin-left: 100px;
+  margin-top: 0px;
+  background-color: #fcfcfc;   
+}
+.cont1{
+height:150px;
+width:99.5%;
+background-color:#C4DFE6;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.cont1 img{
+position: absolute;
+left: 30px;
+}
+h2{
+color: dodgerblue;
+}
+.name{
+display: flex;
+flex-wrap: wrap;
+}
+.name label{
+text-align: right;
+display: inline-block;
+line-height: 2;
+width: 266px;
+margin-left: 170px;
+}
+form button{
+background-color: rgb(46, 145, 46);
+color: white;
+font-size: medium;
+}
+form button:hover{
+background-color: rgb(24, 202, 75);
+}
+.nav{
+width:100%;
+height: 70px;
+background-color: rgb(33, 32, 54);
+position: sticky;
+top: 0px;
+}
+.nav button{
+background-color: rgb(227, 226, 234);
+color:black;
+margin: 0px;
+height: 100%;
+width: 80px;
+}
+.nav a button>svg{
+height: 25px;
+}
+.nav a button:hover
+{
+background-color: rgb(140, 139, 174);
+
+}
+
+@media only screen and (max-width: 950px){
+.name label{
+  text-align: left;
+  width: 100%;
+  margin-left: 0%; 
+}
+
+}
+.error {
+  color: red;
+  font-size: 10px;
+  margin-top: 0px;
+}
+
+.error-border {
+  border: 2px solid red;
+}

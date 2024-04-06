@@ -1,0 +1,97 @@
+body{
+    background-color: #737374;
+
+}
+.nav{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: left;
+    overflow: hidden;
+    position: sticky;
+    top: 0%;
+    background-color:  black;
+  }
+form{
+    width: 950px;
+    max-height: max-content;
+   color: rgb(10, 10, 10);
+   padding: 50px;
+   margin-right:100px;
+   margin-bottom: 100px;
+   margin-left: 100px;
+   margin-top: 0px;
+   background-color:white;
+  }
+.nav #first{
+  margin-left: 100px;
+}
+.nav button{
+    display: flex;
+    flex-wrap: nowrap;
+    
+    width: 200PX;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+    padding-TOP: 15PX;
+    border: 1px solid #66A5AD;
+    background-color: rgb(227, 226, 234);
+    color:black;
+   font-family: Garamond, serif; 
+    border: 0.5px solid black;
+}
+.nav a{
+  text-decoration: none;
+}
+.nav a button>svg{
+    height: 25px;
+    padding-top: 5PX;
+    float: left;
+ }
+ .nav button:hover{
+    background-color: rgb(140, 139, 174);
+	box-shadow: 2px 2px 15px black;
+}
+.name{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .name label{
+      text-align: right;
+    display: inline-block;
+    line-height: 2;
+    width: 266px;
+    margin-left: 170px;
+  }
+  form button{
+	background-color: rgb(46, 145, 46);
+	color: white;
+  font-size: medium;
+}
+form button:hover{
+	background-color: rgb(24, 202, 75);
+}
+@media only screen and (max-width: 850px){
+	.name label{
+    text-align: left;
+    width: 100%;
+    margin-left: 0%; 
+  }
+  .nav button{
+    width: 100%;
+		margin: 0;
+		height: max-content;
+		overflow: hidden;
+	  }
+    .nav{
+      margin-left: 0%;
+    }
+    .nav #first{
+      margin-left: 0%;
+    }
+ form{
+  margin-left: 0px;
+ }
+
+}

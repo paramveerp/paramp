@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="registration.css">
+    <title>Registration</title>
+</head>
+
+<body>
+    <div class="cont1">
+        <img src="logo.png" height="80px">
+        <h1>
+            <center>UPSCALE SUGAR FACTORY SOLUTION</center>
+            <h1>
+    </div>
+
+    <div class="nav">
+        <a href="newproject.html"><button type="button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg>HOME</button></a>
+    
+    </div>
+    <form>
+        <h2>PERSONAL DETAILS</h2><hr>
+        <div class="name">
+            <label>First Name/पहिले नाव :</label><input id="firstNameInput" type="text">
+            <!-- Error message element for first name -->
+            <div id="firstNameError" class="error"></div>
+        </div><br>
+
+        <div class="name">
+            <label>Middle Name/मधले नाव:</label><input id="middleNameInput" type="text">
+            <!-- Error message element for middle name -->
+            <div id="middleNameError" class="error"></div>
+        </div><br>
+
+        <div class="name">
+            <label>Last Name/आडनाव:</label><input id="lastNameInput" type="text">
+            <!-- Error message element for last name -->
+            <div id="lastNameError" class="error"></div>
+        </div>
+        <br>
+
+        <div class="name">
+            <label>Age/वय :</label><input id="age" type="text">
+            <!-- Error message element for age -->
+            <div id="ageError" class="error"></div>
+        </div><br>
+
+        <div class="name"><label>gender/ लिंग:</label>
+            <select id="gender">
+                <option value="Male">Male/पुरुष</option>
+                <option value="Female">Female/स्त्री
+                </option>
+                <option value="Other">Other/इतर</option>
+            </select>
+        </div><br>
+        <div class="name"><label>Date of Birth/जन्मतारीख:</label><input id="DOB" type="date"></div><br>
+        <h2>ADDRESS DETAILS</h2><hr>
+        <div class="name"><label>State/राज्य:</label><input id="state" type="text"></div><br>
+        <div class="name"><label>District/जिल्हा:</label><input id="district" type="text"></div><br>
+        <div class="name">
+            <label>Vilage/Toun/City/गाव/नगर/शहर :</label><input id="village" type="text">
+        </div><br>
+
+        <div class="name">
+            <label>Pin Code/पिन कोड :</label><input id="pinCode" type="text">
+            <!-- Error message element for pin code -->
+            <div id="pinCodeError" class="error"></div>
+        </div><br>
+        <h2>CHOOSE PASSWORD</h2><hr>
+        <div class="name">
+            <label>Enter Password/पासवर्ड टाका:</label><input id="password" type="password">
+            <!-- Error message element for password -->
+            <div id="passwordError" class="error"></div>
+        </div><br>
+
+        <div class="name">
+            <label>Retype Password/पासवर्ड पुन्हा टाईप करा:</label><input type="password">
+        </div><br>
+        <h2>CONTACT DETAILS</h2><hr>
+        <div class="name">
+            <label>Email_Id/ई-मेल आयडी :</label><input id="email" type="email" ,required>
+            <!-- Error message element for email error -->
+            <div id="emailError" class="error"></div>
+        </div><br>
+
+        <div class="name">
+            <label>mobile No/मोबाईल क्रमांक :</label><input id="mobileNo" type="text">
+            <!-- Error message element for mobile number -->
+            <div id="mobileNoError" class="error"></div>
+        </div><br>
+
+        <hr>
+        <center><button type="button" onClick="register()">Sign up/साइन अप करा</button></center>
+
+
+    </form>
+
+    <script>
+
+        // Define the resetErrors function
+        function resetErrors() {
+            // Reset error messages
+            var errorFields = document.querySelectorAll('.error');
+            errorFields.forEach(function (errorField) {
+                errorField.textContent = "";
+            });
+
+            // Reset error borders
+            var inputFields = document.querySelectorAll('input');
+            inputFields.forEach(function (inputField) {
+                inputField.classList.remove('error-border');
+            });
+        }
+
+
+        function register() {
+            // Reset error messages and borders
+            resetErrors();
+
+
+
+            var userName = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            var firstname = document.getElementById("firstNameInput").value;
+            var middleName = document.getElementById("middleNameInput").value;
+            var lastname = document.getElementById("lastNameInput").value;
+            var age = document.getElementById("age").value;
+            var gender = document.getElementById("gender").value;
+            var DOB = document.getElementById("DOB").value;
+            var mobileNo = document.getElementById("mobileNo").value;
+            var state = document.getElementById("state").value;
+            var district = document.getElementById("district").value;
+            var village = document.getElementById("village").value;
+            var pinCode = document.getElementById("pinCode").value;
+
+            // Validation checks
+            var isValid = true;
+
+            // First Name validation
+            if (!/^[a-zA-Z]+$/.test(firstname)) {
+                document.getElementById("firstNameInput").classList.add('error-border');
+                document.getElementById("firstNameError").textContent = "Invalid First name";
+                isValid = false;
+            }
+
+            // Middle Name validation 
+            if (!/^[a-zA-Z]+$/.test(middleName)) {
+                document.getElementById("middleNameInput").classList.add('error-border');
+                document.getElementById("middleNameError").textContent = "Invalid Middle name";
+                isValid = false;
+            }
+
+            // Last Name validation 
+            if (!/^[a-zA-Z]+$/.test(lastname)) {
+                document.getElementById("lastNameInput").classList.add('error-border');
+                document.getElementById("lastNameError").textContent = "Invalid  Last name";
+                isValid = false;
+            }
+
+            // Age validation
+            if (!(/^\d+$/.test(age)) || parseInt(age) <= 0) {
+                document.getElementById("age").classList.add('error-border');
+                document.getElementById("ageError").textContent = "Age must be integer";
+                isValid = false;
+            }
+
+            // Pin Code validation
+            if (!(/^\d{6}$/.test(pinCode)) || parseInt(pinCode) <= 0) {
+                document.getElementById("pinCode").classList.add('error-border');
+                document.getElementById("pinCodeError").textContent = "Pin code must be a six digit";
+                isValid = false;
+            }
+
+            // Password validation
+            if (!/(?=.*\d)(?=.*[A-Z])(?=.*\W).{8,}/.test(password)) {
+                document.getElementById("password").classList.add('error-border');
+                document.getElementById("passwordError").textContent = "Password must contain at least 8 characters";
+                isValid = false;
+            }
+
+            // Mobile Number validation
+            if (!(/^\d{10}$/.test(mobileNo)) || parseInt(mobileNo) <= 0) {
+                document.getElementById("mobileNo").classList.add('error-border');
+                document.getElementById("mobileNoError").textContent = "Mobile number must be a 10-digit";
+                isValid = false;
+            }
+
+            if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(userName)) {
+                document.getElementById("email").classList.add('error-border');
+                document.getElementById("emailError").textContent = "Please enter valid Email";
+                isValid = false;
+            }
+            console.log("isvalid", isValid)
+            // Proceed with registration if data is valid
+            if (isValid) {
+
+                // Request body data
+                var data = {
+                    username: userName,
+                    password: password,
+                    firstname: firstname,
+                    middleName: middleName,
+                    lastname: lastname,
+                    age: age,
+                    gender: gender,
+                    DOB: DOB,
+                    mobileNo: mobileNo,
+                    state: state,
+                    district: district,
+                    village: village,
+                    pinCode: pinCode,
+                };
+
+                fetch('http://127.0.0.1:5000/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        }
+                        throw new Error('Network response was not ok.');
+                    })
+                    .then(data => {
+                        if (data.data) {
+                            alert(data.data);
+                            window.location.href = "newproject.html";
+                        } else if (data.message) {
+                            alert(data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('There was an error!', error);
+                        alert("An error occurred. Please try again."); // Show error message if there's an error in the API call
+                    });
+            }
+        }
+    </script>
+</body>
+
+</html>
